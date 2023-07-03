@@ -1,11 +1,15 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #3b424f;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: 1400ms ease-in-out;
+  &.animate-in {
+    background-color: #1d2129;
+  }
 
   img {
     height: 62vmin;
@@ -13,9 +17,13 @@
     mask-size: 0;
     mask-position: center;
     mask-repeat: no-repeat;
-    transition: mask-size 500ms ease-in;
-    .animate-in {
-      mask-size: 100%;
+    transition: opacity 2900ms ease-in-out, mask-size 2900ms ease-in-out, transform 3140ms ease-in-out;
+    transform: scale(2);
+    opacity: 0;
+    &.animate-in {
+    mask-size: 100%;
+    transform: scale(1);
+    opacity: 1;
     }
   }
 
@@ -26,8 +34,8 @@
     font-size: calc(8px + 2vmin);
     color: #fff;
     opacity: 0;
-    transition: opacity 500ms ease-in 300ms, letter-spacing 500ms ease-in 300ms;
-    .animate-in {
+    transition: opacity 2800ms ease-in-out 2330ms, letter-spacing 2110ms ease-in-out 2330ms;
+    &.animate-in {
       opacity: 1;
       letter-spacing: 0.3em;
     }
