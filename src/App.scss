@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: 62vmin;
+    mask-image: url("scribble-layer.svg");
+    mask-size: 0;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    transition: mask-size 500ms ease-in;
+    .animate-in {
+      mask-size: 100%;
+    }
+  }
+
+  p {
+    font-family: "Bitter", serif;
+    font-weight: 200;
+    letter-spacing: 0.8em;
+    font-size: calc(8px + 2vmin);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 500ms ease-in 300ms, letter-spacing 500ms ease-in 300ms;
+    .animate-in {
+      opacity: 1;
+      letter-spacing: 0.3em;
+    }
+  }
+}
