@@ -19,7 +19,7 @@
   .container {
     container-type: inline-size;
     position: relative;
-    width: clamp(380px, 64%, 770px);
+    width: clamp(380px, 51%, 680px);
     aspect-ratio: 1/1;
     // background-image: url('./harvestmen-site-intro.png');
     background-size: cover;
@@ -60,7 +60,7 @@
     font-family: "Bitter", serif;
     font-weight: 300;
     font-style: italic;
-    font-size: clamp(10px, 2.5cqi, 17px);
+    font-size: clamp(10px, 2.4cqi, 16px);
     letter-spacing: 0.15em;
     color: #ebe6d7;
     // color: white;
@@ -68,7 +68,7 @@
     inset: 0;
     margin: auto;
     top: 22%;
-    padding-right: 8px;
+    padding-right: 0.3em;
     opacity: 0;
     transition: opacity 1000ms ease-in-out; 
     &.animate-in {
