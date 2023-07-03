@@ -15,37 +15,39 @@ function App() {
 
         path.animate(
           [
-            // keyframes
             { strokeDashoffset: `${length}` },
             { strokeDashoffset: "0" },
           ],
           {
             // timing options
             duration: 4500,
-            delay: (i - 0.125) * 1400, // Delay each path by 2 seconds
+            delay: (i - 0.2) * 1600, // Delay each path by 2 seconds
             fill: "forwards", // Retain the style values at the end of the animation
           }
         );
-        // setTimeout(() => {
-        //   const elem = document.getElementById("coming-soon");
-        //   if (elem) {
-        //     elem.classList.add("animate-in");
-        //   }
-        // }, 200);
             setTimeout(() => {
           const elem = document.getElementById("title");
           if (elem) {
             elem.classList.add("animate-in");
           }
-        }, 6810);
+        }, 7210);
       }
+    }
+    const wrapper = document.getElementById("app-wrapper");
+    if (wrapper) {
+      wrapper.style.backgroundColor = "#525e72";
+      wrapper.getBoundingClientRect(); // Trigger a reflow to make sure styles are applied
+      setTimeout(() => {
+        wrapper.style.transition = "background-color 3300ms ease-in-out";
+        wrapper.style.backgroundColor = "#252c37";
+      }, 0);
     }
     const image = document.getElementById("image0_436_92");
     if (image) {
-      image.style.transform = "scale(1.1)"; // starting scale
+      // image.style.transform = "scale(1.1)";
       image.getBoundingClientRect(); // Trigger a reflow to make sure styles are applied
       setTimeout(() => {
-        image.style.transition = "transform 4600ms ease-in-out 1000ms, filter 5300ms ease-in-out 1000ms";
+        image.style.transition = "filter 5300ms ease-in-out 1000ms";
         image.style.filter = "blur(0px)";
         image.style.transform = "scale(1)"; // end scale
       }, 0);
@@ -53,7 +55,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" id="app-wrapper">
       <div className="container">
         <svg
           width="100%"
