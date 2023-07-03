@@ -1,43 +1,94 @@
 .App {
+  container-type: inline-size;
+  position: relative;
+  padding-inline: calc(max(6vw, (100vw - 1280px)/2));
   text-align: center;
   background-color: #3b424f;
   min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: 1400ms ease-in-out;
+
   &.animate-in {
-    background-color: #1d2129;
+    background-color: #8699bf;
   }
 
-  img {
-    height: 62vmin;
-    mask-image: url("scribble-layer.svg");
-    mask-size: 0;
-    mask-position: center;
-    mask-repeat: no-repeat;
-    transition: opacity 2900ms ease-in-out, mask-size 2900ms ease-in-out, transform 3140ms ease-in-out;
-    transform: scale(2);
-    opacity: 0;
-    &.animate-in {
-    mask-size: 100%;
-    transform: scale(1);
-    opacity: 1;
+  .container {
+    container-type: inline-size;
+    position: relative;
+    width: clamp(380px, 64%, 770px);
+    aspect-ratio: 1/1;
+    // background-image: url('./harvestmen-site-intro.png');
+    background-size: cover;
+
+    #image0_436_92 {
+      transform-origin: center;
+      transform: scale(4);
+      filter: blur(9px);
+      // transition: transform 4000ms ease-in-out 2000ms;
+      // &.animate-in {
+      //   transform: scale(1);
+      // }
+    }
+
+    #scribble-mask-path {
+      display: inline;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      path {
+        stroke-width: 38px;
+        stroke-miterlimit: 0;
+        stroke-linecap: round;
+        fill: transparent;
+        stroke: transparent;
+      }
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
     }
   }
 
-  p {
+  h1#title {
     font-family: "Bitter", serif;
-    font-weight: 200;
-    letter-spacing: 0.8em;
-    font-size: calc(8px + 2vmin);
-    color: #fff;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(10px, 2.5cqi, 17px);
+    letter-spacing: 0.15em;
+    color: #ebe6d7;
+    // color: white;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    top: 22%;
+    padding-right: 8px;
     opacity: 0;
-    transition: opacity 2800ms ease-in-out 2330ms, letter-spacing 2110ms ease-in-out 2330ms;
+    transition: opacity 1000ms ease-in-out; 
     &.animate-in {
       opacity: 1;
-      letter-spacing: 0.3em;
     }
+  }
+
+  p#coming-soon {
+    font-family: "Bitter", serif;
+    font-weight: 300;
+    letter-spacing: 0.8em;
+    font-size: calc(8px + 1.7vmin);
+    color: #41251f;
+    opacity: 0;
+    // transition: color 2300ms ease-in-out 400ms, opacity 2400ms ease-in-out 100ms, letter-spacing 2510ms ease-in-out 100ms;
+    letter-spacing: 0.8em;
+    // &.animate-in {
+    letter-spacing: 0.3em;
+    color: #ded8c6;
+    opacity: 1;
+    // }
   }
 }
