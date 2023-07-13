@@ -1,6 +1,5 @@
 import "./App.scss";
 import { useEffect } from "react";
-// import { ScribblePath } from "./ScribblePath";
 
 function App() {
   useEffect(() => {
