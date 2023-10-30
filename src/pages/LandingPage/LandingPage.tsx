@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { IntroSvg } from "../IntroSvg";
+import { IntroSvg } from "../../components/IntroSvg";
 import "./LandingPage.scss";
 
-function App() {
+export function LandingPage(): JSX.Element {
   useEffect(() => {
     for (let i = 1; i <= 3; i++) {
       const drawPaths = document.getElementById(i.toString());
@@ -52,11 +52,11 @@ function App() {
     <div className="App" id="app-wrapper">
       <div className="container">
         <IntroSvg />
-        <h1 id="title">harvestmen</h1>
+        <button className="fade-button">
+          <h1 id="title">harvestmen</h1>
+        </button>
       </div>
       <p id="coming-soon">coming soon</p>
     </div>
   );
 }
-
-export default App;
