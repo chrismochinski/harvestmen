@@ -71,7 +71,8 @@
 @media (max-width: 1400px) {
   .homeWrapper {
     .homeBackgroundWrapper {
-      background-size: calc(1400px - (1vw * 10));
+      background-size: calc(800px + (2vw * 10));
     }
   }
 }
+
