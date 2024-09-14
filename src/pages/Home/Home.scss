@@ -64,6 +64,26 @@
               left: 0;
               width: 100%;
             }
+            & + .comingSoonText {
+              opacity: 1;
+              transform: translateY(0);
+              transition: opacity 320ms ease-out 150ms, transform 320ms ease-out 150ms;
+            }
+          }
+        }
+        .comingSoonText {
+        margin-top: 0.25em;
+          transition: opacity 250ms ease-out, transform 250ms ease-out;
+          opacity: 0;
+          transform: translateY(-1em);
+          h2 {
+            font-family: "Bitter", serif;
+            font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+            font-weight: 400;
+            color: #45403a80;
+            margin-block: 0;
+            text-align: right;
+            line-height: normal;
           }
         }
       }
@@ -95,10 +115,8 @@
   }
 }
 
-.homeWrapper {
-  .cloud {
-    position: absolute;
-    animation: moveCloud linear infinite;
-    pointer-events: none;
-  }
+.cloud {
+  position: absolute;
+  animation: moveCloud linear infinite;
+  pointer-events: none;
 }
