@@ -5,7 +5,13 @@
   position: relative;
 
   .homeBackgroundWrapper {
-    background: linear-gradient(to right, $fadeWhite 0%, $fadeWhiteClear 10%, $fadeWhiteClear 90%, $fadeWhite 100%),
+    background: linear-gradient(
+        to right,
+        $fadeWhite 0%,
+        $fadeWhiteClear 10%,
+        $fadeWhiteClear 90%,
+        $fadeWhite 100%
+      ),
       linear-gradient(180deg, $fadeWhiteClear 86%, $fadeWhite 100%),
       url("../../../public/assets/cloud-top-bg.png");
     background-position: center;
@@ -14,6 +20,8 @@
     background-position: 50% top;
     background-origin: content-box;
     .homePaddingWrapper {
+      position: relative;
+      z-index: 0; //for cloud randomiziation
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
@@ -76,3 +84,21 @@
   }
 }
 
+// ------ CLOUD MOVEMENT ------ //
+
+@keyframes moveCloud {
+  0% {
+    transform: translateX(100vw); /* Start off-screen on the right */
+  }
+  100% {
+    transform: translateX(-100vw); /* Move off-screen on the left */
+  }
+}
+
+.homeWrapper {
+  .cloud {
+    position: absolute;
+    animation: moveCloud linear infinite;
+    pointer-events: none;
+  }
+}
