@@ -11,7 +11,6 @@ const cloudImages = [
   "cloud-4.png",
   "cloud-5.png",
   "cloud-6.png",
-  "cloud-7.png",
   "cloud-8.png",
 ];
 
@@ -55,7 +54,7 @@ export function Home() {
     // Generate clouds continuously with random pauses
     const interval = setInterval(() => {
       setClouds((prevClouds) => [...prevClouds, generateCloud()]);
-    }, Math.random() * (6000 - 1500) + 1500); // Random interval between 1.5s and 6s  
+    }, Math.random() * (6000 - 1500) + 1500); // Random interval between 1.5s and 6s
 
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, []);
@@ -64,28 +63,27 @@ export function Home() {
     <div className="homeWrapper">
       <div className="homeBackgroundWrapper background section first">
         <div className="homePaddingWrapper">
+            {clouds.map((cloud, index) => (
+              <img
+                key={index}
+                src={cloud.src}
+                className="cloud"
+                style={{
+                  top: cloud.top,
+                  width: cloud.width,
+                  animationDuration: cloud.animationDuration,
+                  opacity: cloud.opacity,
+                  zIndex: cloud.zIndex,
+                }}
+                alt="cloud"
+              />
+            ))}
           <div className="homeContentWrapper">
-       
             <div id="harvestmen-button" role="button">
               <h1>Harvestmen</h1>
             </div>
           </div>
           <div className="imageWrapper">
-          {clouds.map((cloud, index) => (
-          <img
-            key={index}
-            src={cloud.src}
-            className="cloud"
-            style={{
-              top: cloud.top,
-              width: cloud.width,
-              animationDuration: cloud.animationDuration,
-              opacity: cloud.opacity,
-              zIndex: cloud.zIndex,
-            }}
-            alt="cloud"
-          />
-        ))}
             <img className="ferrisWheel" src={ferris} alt="Floating Ferris Wheel Logo" />
           </div>
         </div>
