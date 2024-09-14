@@ -1,0 +1,88 @@
+// GLOBAL STYLES
+
+$fadeWhite: #e7ede9;
+$fadeWhiteClear: #e7ede900;
+
+.section {
+  height: fit-content;
+  padding-left: max(6vw, (100vw - 1280px)/2);
+  padding-right: max(6vw, (100vw - 1280px)/2);
+  &.first {
+    margin-top: 0;
+  }
+  &.last {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 1400px) {
+  .section {
+    padding-inline: 0;
+    width: 100%;
+
+  }
+}
+
+.bitter {
+  font-family: "Bitter", serif;
+}
+
+.afacad {
+  font-family: "Afacad", sans-serif;
+}
+
+.raleway {
+  font-family: "Raleway", sans-serif;
+}
+
+.ralewayDots {
+  font-family: "Raleway Dots", sans-serif;
+}
+
+.fw100 {
+  font-weight: 100;
+}
+
+.fw200 {
+  font-weight: 200;
+}
+
+.fw300 {
+  font-weight: 300;
+}
+
+.fw400 {
+  font-weight: 400;
+}
+
+.fw500 {
+  font-weight: 500;
+}
+
+.fw600 {
+  font-weight: 600;
+}
+
+.fw700 {
+  font-weight: 700;
+}
+
+.fsTiny {
+  font-size: clamp(13px, 1vw, 16px);
+}
+
+.fsSmall {
+  font-size: clamp(16px, 1vw, 20px);
+}
+
+.fsMedium {
+  font-size: clamp(20px, 1vw, 24px);
+}
+
+.fsLarge {
+  font-size: clamp(24px, 1vw, 28px);
+}
+
+.fsHuge {
+  font-size: clamp(28px, 1vw, 32px);
+}

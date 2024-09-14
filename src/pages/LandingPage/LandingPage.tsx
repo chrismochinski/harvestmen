@@ -56,7 +56,7 @@ export function LandingPage(): JSX.Element {
           <h1 id="title">harvestmen</h1>
         </button>
       </div>
-      <p id="coming-soon">coming soon</p>
+      <p id="coming-soon">Harvestmen</p>
     </div>
   );
 }

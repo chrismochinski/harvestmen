@@ -1,0 +1,32 @@
+@import "../../globals.scss";
+
+.footer {
+  .footerWrapper {
+    background: linear-gradient(to right, $fadeWhite 0%, $fadeWhiteClear 14%, $fadeWhiteClear 86%, $fadeWhite 100%),
+      linear-gradient(180deg, $fadeWhite 4%, $fadeWhiteClear 18%),
+      url("../../../public/assets/grass-bottom-bg.png");
+
+    background-repeat: no-repeat;
+    background-position: 50% bottom;
+    background-origin: content-box;
+    height: 400px;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-size: cover;
+    p {
+      text-align: center;
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .footer {
+    .footerWrapper {
+      background-size: calc(1400px - (1vw * 10));
+    }
+  }
+}

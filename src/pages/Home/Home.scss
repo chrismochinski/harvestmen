@@ -1,0 +1,77 @@
+@import "../../globals.scss";
+
+.homeWrapper {
+  margin-inline: auto;
+  position: relative;
+
+  .homeBackgroundWrapper {
+    background: linear-gradient(to right, $fadeWhite 0%, $fadeWhiteClear 10%, $fadeWhiteClear 90%, $fadeWhite 100%),
+      linear-gradient(180deg, $fadeWhiteClear 86%, $fadeWhite 100%),
+      url("../../../public/assets/cloud-top-bg.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% top;
+    background-origin: content-box;
+    .homePaddingWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 1rem;
+      align-items: center;
+      padding-block: min(6em, 6vw + 4vh);
+      padding-inline: min(6vw, 4em);
+      .homeContentWrapper {
+        #harvestmen-button {
+          cursor: pointer;
+          padding: 0.3em 0 0.3em 0.8em;
+          backdrop-filter: blur(2px);
+          border-radius: 12px;
+          transition: padding 320ms ease-out;
+          overflow: hidden;
+          h1 {
+            font-family: "Bitter", serif;
+            font-size: clamp(1.25rem, 4vw, 2.5rem);
+            font-weight: 300;
+            color: #45403a;
+            margin-block: 0;
+          }
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -200px;
+            width: 10%;
+            height: 100%;
+            background: linear-gradient(to right, #ffffff 50%, transparent 90%);
+            border-radius: 12px;
+            z-index: -1;
+            transition: all 320ms ease-out;
+            opacity: 0.2;
+          }
+          &:hover {
+            padding: 0.3em 2em 0.3em 0.8em;
+            &:after {
+              opacity: 1;
+              left: 0;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    .imageWrapper {
+      .ferrisWheel {
+        max-width: 260px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .homeWrapper {
+    .homeBackgroundWrapper {
+      background-size: calc(1400px - (1vw * 10));
+    }
+  }
+}
