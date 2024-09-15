@@ -5,8 +5,7 @@ $fadeWhiteClear: #e7ede900;
 
 .section {
   height: fit-content;
-  padding-left: max(6vw, (100vw - 1280px)/2);
-  padding-right: max(6vw, (100vw - 1280px)/2);
+  padding-inline: max(6vw, (100vw - 1600px) / 2);
   &.first {
     margin-top: 0;
   }
@@ -15,13 +14,6 @@ $fadeWhiteClear: #e7ede900;
   }
 }
 
-@media (max-width: 1400px) {
-  .section {
-    padding-inline: 0;
-    width: 100%;
-
-  }
-}
 
 .bitter {
   font-family: "Bitter", serif;

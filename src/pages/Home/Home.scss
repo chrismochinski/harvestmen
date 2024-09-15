@@ -28,9 +28,18 @@
       gap: 1rem;
       align-items: center;
       padding-block: min(6em, 6vw + 4vh);
-      padding-inline: min(6vw, 4em);
+      padding-inline: min(14em, 10vw); // for island spacing from right/left
+
+      //important clouds
+      .cloud {
+        position: absolute;
+        animation: moveCloud linear forwards;
+        pointer-events: none;
+      }
       .homeContentWrapper {
         #harvestmen-button {
+          position: relative;
+          z-index: 1;
           cursor: pointer;
           padding: 0.3em 0 0.3em 0.8em;
           backdrop-filter: blur(2px);
@@ -72,7 +81,7 @@
           }
         }
         .comingSoonText {
-        margin-top: 0.25em;
+          margin-top: 0.25em;
           transition: opacity 250ms ease-out, transform 250ms ease-out;
           opacity: 0;
           transform: translateY(-1em);
@@ -90,16 +99,32 @@
     }
     .imageWrapper {
       .ferrisWheel {
-        max-width: 260px;
+        position: relative;
+        z-index: 1;
+        width: clamp(160px, 25vw, 260px);
       }
     }
   }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1600px) {
   .homeWrapper {
     .homeBackgroundWrapper {
-      background-size: calc(800px + (2vw * 10));
+      background-size: calc(1100px + (2vw * 10));
+      .homePaddingWrapper {
+        padding-inline: 4vw;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+.homeWrapper {
+    .homeBackgroundWrapper {
+      padding-inline: 3vw;
+      .homePaddingWrapper {
+        padding-inline: 0;
+      }
     }
   }
 }
@@ -108,15 +133,17 @@
 
 @keyframes moveCloud {
   0% {
-    transform: translateX(100vw); /* Start off-screen on the right */
+    right: -8%; /* Start just outside the container on the right */
+    opacity: 0; /* Start invisible */
+  }
+  10% {
+    opacity: 1; /* Fade in */
+  }
+  90% {
+    opacity: 1; /* Fully visible */
   }
   100% {
-    transform: translateX(-100vw); /* Move off-screen on the left */
+    right: 98%; /* Move just outside the container on the left */
+    opacity: 0; /* Fade out */
   }
-}
-
-.cloud {
-  position: absolute;
-  animation: moveCloud linear infinite;
-  pointer-events: none;
 }

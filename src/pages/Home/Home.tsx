@@ -21,6 +21,7 @@ interface Cloud {
   animationDuration: string;
   opacity: number;
   zIndex: number;
+  id: string;
 }
 
 export function Home() {
@@ -29,11 +30,11 @@ export function Home() {
   useEffect(() => {
     const generateCloud = (): Cloud => {
       const randomCloud = cloudImages[Math.floor(Math.random() * cloudImages.length)];
-      const randomY = Math.random() * 40; // Random Y position in percentage
+      const randomY = Math.random() * 34; // Random Y position in percentage
       const randomSize = Math.random() * (700 - 200) + 200; // Random size between 200px and 700px
       const randomSpeed = Math.random() * (90 - 30) + 30; // Random speed between 30s and 90s
       const randomOpacity = Math.random() * (0.6 - 0.1) + 0.1; // Random opacity between 0.1 and 0.6
-      const randomZIndex = Math.floor(Math.random() * 2) - 1; // Random z-index between -1 and 1
+      const randomZIndex = Math.floor(Math.random() * 3); // Random z-index between 0 and 2
 
       return {
         src: `/assets/clouds/${randomCloud}`,
@@ -42,6 +43,7 @@ export function Home() {
         animationDuration: `${randomSpeed}s`,
         opacity: randomOpacity,
         zIndex: randomZIndex,
+        id: Math.random().toString(36).substring(7),
       };
     };
 
@@ -54,36 +56,42 @@ export function Home() {
     // Generate clouds continuously with random pauses
     const interval = setInterval(() => {
       setClouds((prevClouds) => [...prevClouds, generateCloud()]);
-    }, Math.random() * (6000 - 1500) + 1500); // Random interval between 1.5s and 6s
+    }, Math.random() * (5000 - 1000) + 1000); // Random interval between 1.5s and 6s
 
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, []);
+
+  // Function to remove a cloud once its animation ends
+  const handleAnimationEnd = (cloudId: string) => {
+    setClouds((prevClouds) => prevClouds.filter((cloud) => cloud.id !== cloudId));
+  };
 
   return (
     <div className="homeWrapper">
       <div className="homeBackgroundWrapper background section first">
         <div className="homePaddingWrapper">
-            {clouds.map((cloud, index) => (
-              <img
-                key={index}
-                src={cloud.src}
-                className="cloud"
-                style={{
-                  top: cloud.top,
-                  width: cloud.width,
-                  animationDuration: cloud.animationDuration,
-                  opacity: cloud.opacity,
-                  zIndex: cloud.zIndex,
-                }}
-                alt="cloud"
-              />
-            ))}
+          {clouds.map((cloud) => (
+            <img
+              key={cloud.id}
+              src={cloud.src}
+              className="cloud"
+              style={{
+                top: cloud.top,
+                width: cloud.width,
+                animationDuration: cloud.animationDuration,
+                zIndex: cloud.zIndex,
+                opacity: cloud.opacity,
+              }}
+              alt="cloud"
+              onAnimationEnd={() => handleAnimationEnd(cloud.id)}
+            />
+          ))}
           <div className="homeContentWrapper">
             <div id="harvestmen-button" role="button">
               <h1>Harvestmen</h1>
             </div>
             <div className="comingSoonText">
-                <h2>Coming Soon</h2>
+              <h2>Coming Soon</h2>
             </div>
           </div>
           <div className="imageWrapper">
