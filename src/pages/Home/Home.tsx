@@ -33,7 +33,7 @@ export function Home() {
       const randomY = Math.random() * 34; // Random Y position in percentage
       const randomSize = Math.random() * (700 - 200) + 200; // Random size between 200px and 700px
       const randomSpeed = Math.random() * (90 - 30) + 30; // Random speed between 30s and 90s
-      const randomOpacity = Math.random() * (0.6 - 0.1) + 0.1; // Random opacity between 0.1 and 0.6
+      const randomOpacity = Math.random() * (0.7 - 0.1) + 0.1; // Random opacity between 0.1 and 0.7
       const randomZIndex = Math.floor(Math.random() * 3); // Random z-index between 0 and 2
 
       return {
@@ -67,7 +67,7 @@ export function Home() {
   };
 
   return (
-    <div className="homeWrapper">
+    <div className="siteWrapper">
       <div className="homeBackgroundWrapper background section first">
         <div className="homePaddingWrapper">
           {clouds.map((cloud) => (
@@ -86,7 +86,7 @@ export function Home() {
               onAnimationEnd={() => handleAnimationEnd(cloud.id)}
             />
           ))}
-          <div className="homeContentWrapper">
+          <div className="titleMenuWrapper">
             <div id="harvestmen-button" role="button">
               <h1>Harvestmen</h1>
             </div>

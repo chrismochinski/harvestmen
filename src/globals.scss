@@ -31,6 +31,14 @@ $fadeWhiteClear: #e7ede900;
   font-family: "Raleway Dots", sans-serif;
 }
 
+.balance {
+  text-wrap: balance;
+}
+
+.pretty {
+  text-wrap: pretty;
+}
+
 .fw100 {
   font-weight: 100;
 }
@@ -60,7 +68,7 @@ $fadeWhiteClear: #e7ede900;
 }
 
 .fsTiny {
-  font-size: clamp(13px, 1vw, 16px);
+  font-size: clamp(12px, 1vw, 16px);
 }
 
 .fsSmall {
