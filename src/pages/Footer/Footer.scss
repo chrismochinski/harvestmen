@@ -2,7 +2,13 @@
 
 .footer {
   .footerWrapper {
-    background: linear-gradient(to right, $fadeWhite 0%, $fadeWhiteClear 14%, $fadeWhiteClear 86%, $fadeWhite 100%),
+    background: linear-gradient(
+        to right,
+        $fadeWhite 0%,
+        $fadeWhiteClear 14%,
+        $fadeWhiteClear 86%,
+        $fadeWhite 100%
+      ),
       linear-gradient(180deg, $fadeWhite 4%, $fadeWhiteClear 18%),
       url("../../../public/assets/grass-bottom-bg.png");
 
@@ -26,7 +32,8 @@
 @media (max-width: 1600px) {
   .footer {
     .footerWrapper {
-        background-size: calc(1100px + (2vw * 10));
+      background-size: calc(1100px + (2vw * 10));
+      font-size: clamp(12px, 2vw, 1em);
     }
   }
 }

@@ -112,7 +112,7 @@
 }
 
 @media (max-width: 1600px) {
-  .homeWrapper {
+  .siteWrapper {
     .homeBackgroundWrapper {
       background-size: calc(1100px + (2vw * 10));
       .homePaddingWrapper {
@@ -123,7 +123,7 @@
 }
 
 @media (max-width: 1200px) {
-  .homeWrapper {
+  .siteWrapper {
     .homeBackgroundWrapper {
       padding-inline: 3vw;
       .homePaddingWrapper {
@@ -138,8 +138,16 @@
 @keyframes moveCloud {
   0% {
     right: -12%; /* Start just outside the container on the right */
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  70% {
+    opacity: 0.6;
   }
   100% {
+    opacity: 0;
     right: 98%; /* Move just outside the container on the left */
   }
 }
