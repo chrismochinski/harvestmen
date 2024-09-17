@@ -24,10 +24,8 @@
     background-position: 50% top;
     background-origin: content-box;
     .homePaddingWrapper {
-
-      
       position: relative;
-      z-index: 0; //for cloud layer randomiziation
+      z-index: 0;
       //important clouds
       .cloud {
         position: absolute;

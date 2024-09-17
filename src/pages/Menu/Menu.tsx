@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Menu.scss";
 import ferris from "../../pages/Home/ferris-1.png";
+import { PageContent } from "../PageContent";
 
 interface MenuProps {
   menuOpen: boolean;
@@ -14,22 +15,25 @@ export function Menu(props: MenuProps) {
   console.log("menuOpen - Menu component:", menuOpen);
 
   return (
-    <div className="menu">
-      <img
-        className={`ferrisWheel ${isHovered ? "hovered" : ""}`}
-        src={ferris}
-        alt="Floating Ferris Wheel Logo"
-      />
-      <div className="titleMenuWrapper">
-        <div
-          id="harvestmen-button"
-          role="button"
-          tabIndex={0}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onClick={handleMenuOpen}>
-          <h1 className="crimson-text">Harvestmen</h1>
+    <div className={`menu ${menuOpen ? "menuOpen" : ""}`}>
+      <div className="menuInner">
+        <img
+          className={`ferrisWheel ${isHovered ? "hovered" : ""}`}
+          src={ferris}
+          alt="Floating Ferris Wheel Logo"
+        />
+        <div className="titleMenuWrapper">
+          <div
+            id="harvestmen-button"
+            role="button"
+            tabIndex={0}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onClick={handleMenuOpen}>
+            <h1 className="crimson-text">Harvestmen</h1>
+          </div>
         </div>
+        <PageContent menuOpen={menuOpen} />
       </div>
     </div>
   );

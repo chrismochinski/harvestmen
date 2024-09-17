@@ -3,7 +3,6 @@ import { Footer } from "../Footer";
 import "./Home.scss";
 import { CloudProps, cloudImages } from ".";
 import { Menu } from "../Menu";
-import { PageContent } from "../PageContent";
 
 export function Home() {
   const [clouds, setClouds] = useState<CloudProps[]>([]);
@@ -56,7 +55,7 @@ export function Home() {
   return (
     <div className="siteWrapper">
       <div className="homeBackgroundWrapper background section first">
-        <div className="homePaddingWrapper">
+        <div className={`homePaddingWrapper ${menuOpen ? "menuOpen" : ""}`}> 
           {clouds.map((cloud) => (
             <img
               key={cloud.id}
@@ -73,9 +72,10 @@ export function Home() {
               onAnimationEnd={() => handleAnimationEnd(cloud.id)}
             />
           ))}
-          <Menu menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
+          
+            <Menu menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
+           
         </div>
-        <PageContent menuOpen={menuOpen} />
       </div>
       <Footer />
     </div>

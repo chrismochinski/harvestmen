@@ -5,63 +5,95 @@
   width: 100%;
   height: 100%;
   position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding-top: 6em;
-  .ferrisWheel {
-    width: clamp(280px, 65vw, 420px);
-    z-index: 1;
-    transform-origin: 50% 50%;
-    transition: transform 420ms ease-in-out, filter 420ms ease-in-out, opacity 420ms ease-in-out;
-    opacity: 0.92;
-    &.hovered {
-      transition: transform 400ms ease-in-out, filter 400ms ease-in-out, opacity 400ms ease-in-out;
-      transform: scale(0.97);
-      filter: brightness(0.94) contrast(1.05);
-      opacity: .97;
+  padding-top: 10em;
+  .menuInner {
+    transform-origin: 50% 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .ferrisWheel {
+      width: clamp(280px, 65vw, 420px);
+      z-index: 1;
+      transform-origin: 50% 50%;
+      transition: transform 420ms ease-in-out, filter 420ms ease-in-out, opacity 420ms ease-in-out;
+      opacity: 0.92;
+      &.hovered {
+        transition: transform 400ms ease-in-out, filter 400ms ease-in-out, opacity 400ms ease-in-out;
+        transform: scale(0.97);
+        filter: brightness(0.94) contrast(1.05);
+        opacity: 0.97;
+      }
+    }
+    .titleMenuWrapper {
+      position: absolute;
+      z-index: 1;
+      top: 32.4%;
+      #harvestmen-button {
+        transition: transform 420ms ease-in-out, opacity 420ms ease-in-out;
+        opacity: 0.7;
+        position: relative;
+        cursor: pointer;
+        padding-inline: 2em;
+        padding-block: 4em;
+        h1 {
+          transition: text-shadow 380ms ease-in-out, background-position 600ms ease-in-out,
+            background-size 600ms ease-in-out, -webkit-text-stroke 600ms ease-in-out;
+          font-size: clamp(2rem, 8.6cqi, 3.4rem);
+          font-weight: 600;
+          text-shadow: 0px 0px 9px #ffffff10, 0px 0px 9px #ffffff10;
+          margin-block: 0;
+          margin-inline: 0;
+          background: url("../../../public/assets/clouds/cloud-7.png");
+          background-position: 80% 30%;
+          background-size: 90%; /* Adjust this depending on the pattern or image size */
+          -webkit-background-clip: text; /* Clips the background to the text */
+          background-clip: text; /* For non-webkit browsers */
+          color: #d0e3ee75; /* Makes the text color transparent so the background shows through */
+          -webkit-text-fill-color: #d0e3ee67; /* Ensures the fill color is transparent for WebKit browsers */
+          -webkit-text-stroke: 0.5px #d0e3ee67; /* Adds a stroke for WebKit browsers */
+        }
+        &:hover {
+          transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
+          transform: translateY(-0.18em) scale(1.04);
+          opacity: 1;
+          h1 {
+            transition: text-shadow 250ms ease-in-out, background-position 425ms ease-in-out,
+              background-size 425ms ease-in-out, -webkit-text-stroke 425ms ease-in-out;
+            text-shadow: 0px 0px 9px #ffffff70, 0px 0px 9px #ffffff70;
+            background-position: 39% 30%;
+            background-size: 120%;
+            -webkit-text-stroke: 0.5px #95d3f7a5;
+          }
+        }
+      }
     }
   }
-  .titleMenuWrapper {
-    position: absolute;
-    z-index: 1;
-    top: 37.5%;
-    #harvestmen-button {
-      transition: transform 420ms ease-in-out, opacity 420ms ease-in-out;
-      opacity: 0.7;
-      position: relative;
-      cursor: pointer;
-      padding-inline: 2em;
-      padding-block: 4em;
-      h1 {
-        transition: text-shadow 380ms ease-in-out, background-position 600ms ease-in-out,
-          background-size 600ms ease-in-out, -webkit-text-stroke 600ms ease-in-out;
-        font-size: clamp(2rem, 8.6cqi, 3.4rem);
-        font-weight: 600;
-        text-shadow: 0px 0px 9px #ffffff10, 0px 0px 9px #ffffff10;
-        margin-block: 0;
-        margin-inline: 0;
-        background: url("../../../public/assets/clouds/cloud-7.png");
-        background-position: 80% 30%;
-        background-size: 90%; /* Adjust this depending on the pattern or image size */
-        -webkit-background-clip: text; /* Clips the background to the text */
-        background-clip: text; /* For non-webkit browsers */
-        color: #d0e3ee75; /* Makes the text color transparent so the background shows through */
-        -webkit-text-fill-color: #d0e3ee67; /* Ensures the fill color is transparent for WebKit browsers */
-        -webkit-text-stroke: 0.5px #d0e3ee67; /* Adds a stroke for WebKit browsers */
+  // --------------------------------------------------- //
+  // --------------------------------------------------- //
+  // --------------- WHEN MENU IS OPENED --------------- //
+  // --------------------------------------------------- //
+  // --------------------------------------------------- //
+
+  &.menuOpen {
+    padding-top: 3em;
+    transition: padding-top 1600ms ease 100ms;
+
+    .menuInner {
+      transform: scale(0.6);
+
+      transition: transform 2050ms ease 300ms;
+
+      .ferrisWheel {
+        opacity: 0.5;
+        transform: scale(0.97);
+        filter: brightness(0.94) contrast(1.05);
+        transition: filter 1670ms ease 100ms, opacity 1800ms ease 500ms;
       }
-      &:hover {
-        transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
-        transform: translateY(-0.18em) scale(1.04);
-        opacity: 1;
-        h1 {
-          transition: text-shadow 250ms ease-in-out, background-position 425ms ease-in-out,
-            background-size 425ms ease-in-out, -webkit-text-stroke 425ms ease-in-out;
-          text-shadow: 0px 0px 9px #ffffff70, 0px 0px 9px #ffffff70;
-          background-position: 39% 30%;
-          background-size: 120%;
-          -webkit-text-stroke: 0.5px #95d3f7a5;
+
+      .titleMenuWrapper {
+        #harvestmen-button {
+        display: none; // revisit //important // todo // DAMMIT
         }
       }
     }

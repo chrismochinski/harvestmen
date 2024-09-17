@@ -1,6 +1,30 @@
 @import "../../globals.scss";
 
 .pageContentWrapper {
-  height: clamp(200px, calc(20vh + 20vw), 500px); // revisit
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  h2 {
+    opacity: 0;
+    font-size: clamp(2.5rem, 10cqi, 4rem);
+    font-weight: 300;
+    text-align: center;
+    margin-inline: auto;
+    transform: scaleX(4) translateY(2em);
+    color: #0d0d0d;
+    filter: blur(1em);
+    text-shadow: 1px 1px 7px #0d0d0daa;
+    padding-top: min(calc(3vh + 3vw), 2em);
+  }
+  &.menuOpen {
+    h2 {
+      transition: opacity 700ms ease-in-out 1200ms, transform 1700ms ease-in-out 700ms,
+        filter 1900ms ease-in-out 800ms;
+        transform: scaleX(1) translateY(0);
+      opacity: 0.7;
+      filter: blur(0);
+    }
+  }
 }
