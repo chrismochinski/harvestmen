@@ -1,0 +1,6 @@
+@import "../../globals.scss";
+
+.pageContentWrapper {
+  height: clamp(200px, calc(20vh + 20vw), 500px); // revisit
+  width: 100%;
+}

@@ -2,19 +2,24 @@ import { useState } from "react";
 import "./Menu.scss";
 import ferris from "../../pages/Home/ferris-1.png";
 
-export function Menu() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+interface MenuProps {
+  menuOpen: boolean;
+  handleMenuOpen: () => void;
+}
 
-  const handleMenuOpen = () => {
-    console.log("menu open clicked!");
-    setMenuOpen(true);
-  };
+export function Menu(props: MenuProps) {
+  const { menuOpen, handleMenuOpen } = props;
+  const [isHovered, setIsHovered] = useState(false);
+
+  console.log("menuOpen - Menu component:", menuOpen);
 
   return (
     <div className="menu">
-      <img className={`ferrisWheel ${isHovered ? "hovered" : ""}`}
-       src={ferris} alt="Floating Ferris Wheel Logo" />
+      <img
+        className={`ferrisWheel ${isHovered ? "hovered" : ""}`}
+        src={ferris}
+        alt="Floating Ferris Wheel Logo"
+      />
       <div className="titleMenuWrapper">
         <div
           id="harvestmen-button"

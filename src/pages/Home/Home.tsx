@@ -3,9 +3,11 @@ import { Footer } from "../Footer";
 import "./Home.scss";
 import { CloudProps, cloudImages } from ".";
 import { Menu } from "../Menu";
+import { PageContent } from "../PageContent";
 
 export function Home() {
   const [clouds, setClouds] = useState<CloudProps[]>([]);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const generateCloud = (): CloudProps => {
@@ -46,6 +48,11 @@ export function Home() {
     setClouds((prevClouds) => prevClouds.filter((cloud) => cloud.id !== cloudId));
   };
 
+  const handleMenuOpen = () => {
+    console.log("menu open clicked!");
+    setMenuOpen(true);
+  };
+
   return (
     <div className="siteWrapper">
       <div className="homeBackgroundWrapper background section first">
@@ -66,15 +73,10 @@ export function Home() {
               onAnimationEnd={() => handleAnimationEnd(cloud.id)}
             />
           ))}
-          <Menu />
+          <Menu menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
         </div>
+        <PageContent menuOpen={menuOpen} />
       </div>
-      {/* SPLIT SECTION FOR CONTENT  */}
-      <div className="pageContentWrapper">
-        {/* NOTHING GOES HERE YET */}
-      </div>
-
-      {/* SPLIT SECTION FOR CONTENT  */}
       <Footer />
     </div>
   );
