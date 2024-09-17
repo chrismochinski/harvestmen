@@ -1,40 +1,20 @@
 import { useEffect, useState } from "react";
 import { Footer } from "../Footer";
 import "./Home.scss";
-import ferris from "./ferris-1.png";
-
-const cloudImages = [
-  "cloud-0.png",
-  "cloud-1.png",
-  "cloud-2.png",
-  "cloud-3.png",
-  "cloud-4.png",
-  "cloud-5.png",
-  "cloud-6.png",
-  "cloud-8.png",
-];
-
-interface Cloud {
-  src: string;
-  top: string;
-  width: string;
-  animationDuration: string;
-  opacity: number;
-  zIndex: number;
-  id: string;
-}
+import { CloudProps, cloudImages } from ".";
+import { Menu } from "../Menu";
 
 export function Home() {
-  const [clouds, setClouds] = useState<Cloud[]>([]);
+  const [clouds, setClouds] = useState<CloudProps[]>([]);
 
   useEffect(() => {
-    const generateCloud = (): Cloud => {
+    const generateCloud = (): CloudProps => {
       const randomCloud = cloudImages[Math.floor(Math.random() * cloudImages.length)];
       const randomY = Math.random() * 34; // Random Y position in percentage
       const randomSize = Math.random() * (700 - 200) + 200; // Random size between 200px and 700px
       const randomSpeed = Math.random() * (90 - 30) + 30; // Random speed between 30s and 90s
       const randomOpacity = Math.random() * (0.7 - 0.1) + 0.1; // Random opacity between 0.1 and 0.7
-      const randomZIndex = Math.floor(Math.random() * 3); // Random z-index between 0 and 2
+      const randomZIndex = Math.floor(Math.random() * 6) - 2; // Random z-index between -2 and 3
 
       return {
         src: `/assets/clouds/${randomCloud}`,
@@ -56,7 +36,7 @@ export function Home() {
     // Generate clouds continuously with random pauses
     const interval = setInterval(() => {
       setClouds((prevClouds) => [...prevClouds, generateCloud()]);
-    }, Math.random() * (5000 - 1000) + 1000); // Random interval between 1.5s and 6s
+    }, Math.random() * (5000 - 2000) + 2000); // Random interval between 2s and 6s
 
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, []);
@@ -86,19 +66,15 @@ export function Home() {
               onAnimationEnd={() => handleAnimationEnd(cloud.id)}
             />
           ))}
-          <div className="titleMenuWrapper">
-            <div id="harvestmen-button" role="button">
-              <h1>Harvestmen</h1>
-            </div>
-            <div className="comingSoonText">
-              <h2>Coming Soon</h2>
-            </div>
-          </div>
-          <div className="imageWrapper">
-            <img className="ferrisWheel" src={ferris} alt="Floating Ferris Wheel Logo" />
-          </div>
+          <Menu />
         </div>
       </div>
+      {/* SPLIT SECTION FOR CONTENT  */}
+      <div className="pageContentWrapper">
+        {/* NOTHING GOES HERE YET */}
+      </div>
+
+      {/* SPLIT SECTION FOR CONTENT  */}
       <Footer />
     </div>
   );
