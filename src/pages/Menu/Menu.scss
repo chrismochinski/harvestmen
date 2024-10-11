@@ -8,8 +8,9 @@
   padding-top: 10em;
   perspective: 4000px;
   .menuInner {
-    transition: all $animationDuration ease-in-out ;
-    transform-origin: 50% 10%;
+    transform-origin: 50% 28%;
+    transition: all $animationDuration * 1.2 ease-in-out;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,7 +28,6 @@
         filter: brightness(0.94) contrast(1.05);
         opacity: 0.97;
       }
-     
     }
     .titleMenuWrapper {
       position: absolute;
@@ -75,8 +75,7 @@
 
     // important //animation
     &.flyingAnimation {
-      transform: translateY(52vh) translateZ(2800px); // for 3D flying and user perspective
-      opacity: 0.6;
+      transform: translateY(12vh) rotate(90deg) translateY(15vw) translateZ(2500px); // for 3D flying and user perspective
     }
   }
   // --------------------------------------------------- //
@@ -86,18 +85,12 @@
   // --------------------------------------------------- //
 
   &.menuOpen {
- 
-
     .menuInner {
-    
-  
-
       .titleMenuWrapper {
         #harvestmen-button {
-        display: none; // revisit //important // todo // DAMMIT
+          display: none; // revisit //important // todo // DAMMIT
         }
       }
     }
   }
- 
 }

@@ -4,6 +4,7 @@
 
 .siteWrapper {
   perspective: 4000px; // for 3D flying and user perspective
+  perspective-origin: 50% 0%;
   margin-inline: auto;
   position: relative;
   overflow: hidden;
@@ -42,7 +43,7 @@
     }
 
     &.flyingAnimation { 
-     transform: translateZ(700px) rotateZ(-270deg) translateX(0) translateY(-20vh);
+     transform: translateZ(500px) translateY(-5vh);
     }
 
   

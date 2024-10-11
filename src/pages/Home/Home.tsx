@@ -90,6 +90,7 @@ export function Home() {
 
     document.querySelector(".homeBackgroundWrapper")?.classList.add("flyingAnimation");
     document.querySelector(".menuInner")?.classList.add("flyingAnimation");
+    document.querySelector(".footer")?.classList.add("flyingAnimation");
     setMenuOpen(true);
   };
 
