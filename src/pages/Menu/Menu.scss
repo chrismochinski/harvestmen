@@ -76,19 +76,12 @@
   // --------------------------------------------------- //
 
   &.menuOpen {
-    padding-top: 3em;
-    transition: padding-top 1600ms ease 100ms;
+ 
 
     .menuInner {
-      transform: scale(0.6);
-
-      transition: transform 2050ms ease 300ms;
-
+    
       .ferrisWheel {
-        opacity: 0.5;
-        transform: scale(0.97);
-        filter: brightness(0.94) contrast(1.05);
-        transition: filter 1670ms ease 100ms, opacity 1800ms ease 500ms;
+      
       }
 
       .titleMenuWrapper {
