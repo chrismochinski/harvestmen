@@ -6,13 +6,16 @@
   height: 100%;
   position: relative;
   padding-top: 10em;
+  perspective: 4000px;
   .menuInner {
+    transition: all $animationDuration ease-in-out ;
     transform-origin: 50% 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     .ferrisWheel {
+      position: relative;
       width: clamp(280px, 65vw, 420px);
       z-index: 1;
       transform-origin: 50% 50%;
@@ -24,6 +27,7 @@
         filter: brightness(0.94) contrast(1.05);
         opacity: 0.97;
       }
+     
     }
     .titleMenuWrapper {
       position: absolute;
@@ -68,6 +72,12 @@
         }
       }
     }
+
+    // important //animation
+    &.flyingAnimation {
+      transform: translateY(52vh) translateZ(2800px); // for 3D flying and user perspective
+      opacity: 0.6;
+    }
   }
   // --------------------------------------------------- //
   // --------------------------------------------------- //
@@ -80,9 +90,7 @@
 
     .menuInner {
     
-      .ferrisWheel {
-      
-      }
+  
 
       .titleMenuWrapper {
         #harvestmen-button {
@@ -91,4 +99,5 @@
       }
     }
   }
+ 
 }

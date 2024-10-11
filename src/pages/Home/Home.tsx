@@ -8,6 +8,39 @@ export function Home() {
   const [clouds, setClouds] = useState<CloudProps[]>([]);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Define a custom smooth scroll function
+  const smoothScrollToTop = (duration: number) => {
+    const start = window.scrollY;
+    const startTime = performance.now();
+
+    const animateScroll = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1); // Cap progress at 1
+      const easeInOutQuad =
+        progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+      window.scrollTo(0, start * (1 - easeInOutQuad)); // Scroll up based on easing
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll); // Continue scrolling until complete
+      }
+    };
+
+    requestAnimationFrame(animateScroll);
+  };
+
+  // Use this function inside the useEffect hook
+  useEffect(() => {
+    const delay = 400;
+    const scrollDuration = 1200;
+
+    const timer = setTimeout(() => {
+      smoothScrollToTop(scrollDuration);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     const generateCloud = (): CloudProps => {
       const randomCloud = cloudImages[Math.floor(Math.random() * cloudImages.length)];
@@ -49,13 +82,21 @@ export function Home() {
 
   const handleMenuOpen = () => {
     console.log("menu open clicked!");
+    const siteWrapper = document.querySelector(".siteWrapper");
+    if (siteWrapper) {
+      siteWrapper.classList.add("flyingAnimation");
+    }
+
+
+    document.querySelector(".homeBackgroundWrapper")?.classList.add("flyingAnimation");
+    document.querySelector(".menuInner")?.classList.add("flyingAnimation");
     setMenuOpen(true);
   };
 
   return (
     <div className="siteWrapper">
       <div className="homeBackgroundWrapper background section first">
-        <div className={`homePaddingWrapper ${menuOpen ? "menuOpen" : ""}`}> 
+        <div className={`homePaddingWrapper ${menuOpen ? "menuOpen" : ""}`}>
           {clouds.map((cloud) => (
             <img
               key={cloud.id}
@@ -72,9 +113,8 @@ export function Home() {
               onAnimationEnd={() => handleAnimationEnd(cloud.id)}
             />
           ))}
-          
-            <Menu menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
-           
+
+          <Menu menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
         </div>
       </div>
       <Footer />

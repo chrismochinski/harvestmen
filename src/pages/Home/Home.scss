@@ -1,6 +1,9 @@
 @import "../../globals.scss";
 
+
+
 .siteWrapper {
+  perspective: 4000px; // for 3D flying and user perspective
   margin-inline: auto;
   position: relative;
   overflow: hidden;
@@ -8,7 +11,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: all $animationDuration ease-in-out;
   .homeBackgroundWrapper {
+    transition: all $animationDuration ease-in-out;
     background: linear-gradient(
         to right,
         $fadeWhite 0%,
@@ -28,14 +33,22 @@
       z-index: 0;
       //important clouds
       .cloud {
+      
         position: absolute;
         animation: moveCloud linear forwards;
         pointer-events: none;
       }
       // <---- text pulled from here
     }
-    // <---- ferris wheel pulled from here
+
+    &.flyingAnimation { 
+     transform: translateZ(700px) rotateZ(-270deg) translateX(0) translateY(-20vh);
+    }
+
+  
   }
+
+  // important //animation important REQUIRES FULL PERSPECTIVE
 }
 
 @media (max-width: 1600px) {
@@ -78,3 +91,4 @@
     right: 98%; /* Move just outside the container on the left */
   }
 }
+
